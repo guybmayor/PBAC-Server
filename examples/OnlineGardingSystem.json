@@ -1,0 +1,539 @@
+{
+	"name": "OnlineGardingSystem",
+	"dependencyList": {
+		"wasReplacedVof": {
+			"dependencyPath": [{
+				"dependencyRole": {
+					"name": "replace",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "input",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasSubmittedVof": {
+			"dependencyPath": [{
+				"dependencyRole": {
+					"name": "submit",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "input",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasReviewedOof": {
+			"dependencyPath": [{
+				"dependencyRole": {
+					"name": "review",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "input",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasRevisedVof": {
+			"dependencyPath": [{
+				"dependencyRole": {
+					"name": "revise",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "input",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasGradedOof": {
+			"dependencyPath": [{
+				"dependencyRole": {
+					"name": "grade",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "input",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasAppendedVof": {
+			"dependencyPath": [{
+				"dependencyRole": {
+					"name": "append",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "src",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasOneOfReviewOof": {
+			"dependencyPath": [{
+				"dependencyPath": {
+					"name": "wasRevisedVof",
+					"isReverse": false
+				}
+			},
+			"ZERO_OR_MORE",
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "review",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "input",
+					"depandencyName": "USE"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasAuthoredBy": {
+			"dependencyPath": [{
+				"dependencyPath": {
+					"name": "wasSubmittedVof",
+					"isReverse": false
+				}
+			},
+			"ZERO_OR_ONE",
+			"ANY_OBJECT",
+			{
+				"dependencyPath": {
+					"name": "wasReplacedVof",
+					"isReverse": false
+				}
+			},
+			"ZERO_OR_MORE",
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "upload",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"depandencyName": "CONTROLL"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasReviewedBy": {
+			"dependencyPath": [{
+				"dependencyPath": {
+					"name": "wasReviewedOof",
+					"isReverse": true
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "review",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"depandencyName": "CONTROLL"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasCreatedReviewBy": {
+			"dependencyPath": [{
+				"dependencyPath": {
+					"name": "wasRevisedVof",
+					"isReverse": false
+				}
+			},
+			"ZERO_OR_MORE",
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "review",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"depandencyName": "CONTROLL"
+				}
+			}],
+			"isReverse": false
+		},
+		"wasGradedBy": {
+			"dependencyPath": [{
+				"dependencyPath": {
+					"name": "wasAppendedVof",
+					"isReverse": false
+				}
+			},
+			"ZERO_OR_MORE",
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"name": "grade",
+					"depandencyName": "GENERATE"
+				}
+			},
+			"ANY_OBJECT",
+			{
+				"dependencyRole": {
+					"depandencyName": "CONTROLL"
+				}
+			}],
+			"isReverse": false
+		}
+	},
+	"actionTypes": {
+		"upload": {
+			"roles": [{
+				"name": "upload",
+				"isInput": false
+			}],
+			"policy": {
+				
+			},
+			"isIncreaseObjetVersion": false
+		},
+		"replace": {
+			"roles": [{
+				"name": "input",
+				"isInput": true
+			},
+			{
+				"name": "replace",
+				"isInput": false
+			}],
+			"policy": {
+				"UARules": {
+					"rules": [{
+						"rule": {
+							"operator": "INCLUDE",
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasAuthoredBy",
+									"isReverse": false
+								}
+							}
+						}
+					}]
+				},
+				"AVRules": {
+					"rules": [{
+						"rule": {
+							"operator": "EQUAL",
+							"number": 0,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasSubmittedVof",
+									"isReverse": false
+								}
+							}
+						}
+					}]
+				}
+			},
+			"isIncreaseObjetVersion": true
+		},
+		"submit": {
+			"roles": [{
+				"name": "input",
+				"isInput": true
+			},
+			{
+				"name": "submit",
+				"isInput": false
+			}],
+			"policy": {
+				"UARules": {
+					"rules": [{
+						"rule": {
+							"operator": "INCLUDE",
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasAuthoredBy",
+									"isReverse": false
+								}
+							}
+						}
+					}]
+				},
+				"AVRules": {
+					"rules": [{
+						"rule": {
+							"operator": "EQUAL",
+							"number": 0,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasSubmittedVof",
+									"isReverse": false
+								}
+							}
+						}
+					}]
+				}
+			},
+			"isIncreaseObjetVersion": true
+		},
+		"review": {
+			"roles": [{
+				"name": "input",
+				"isInput": true
+			},
+			{
+				"name": "review",
+				"isInput": false
+			}],
+			"policy": {
+				"UARules": {
+					"rules": [{
+						"rule": {
+							"operator": "NOT_INCLUDE",
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasAuthoredBy",
+									"isReverse": false
+								}
+							}
+						}
+					},
+					{
+						"UARules": {
+							"rules": [{
+								"rule": {
+									"operator": "NOT_INCLUDE",
+									"depencency": {
+										"dependencyPath": {
+											"name": "wasReviewedBy",
+											"isReverse": false
+										}
+									}
+								}
+							}]
+						}
+					}],
+					"operator": "AND"
+				},
+				"AVRules": {
+					"rules": [{
+						"rule": {
+							"operator": "NOT_EQUAL",
+							"number": 0,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasSubmittedVof",
+									"isReverse": false
+								}
+							}
+						}
+					},
+					{
+						"rule": {
+							"operator": "SMALL",
+							"number": 3,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasReviewedOof",
+									"isReverse": true
+								}
+							}
+						}
+					},
+					{
+						"rule": {
+							"operator": "EQUAL",
+							"number": 0,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasGradedOof",
+									"isReverse": true
+								}
+							}
+						}
+					}],
+					"operator": "AND"
+				}
+			},
+			"isIncreaseObjetVersion": false
+		},
+		"revise": {
+			"roles": [{
+				"name": "input",
+				"isInput": true
+			},
+			{
+				"name": "revise",
+				"isInput": false
+			}],
+			"policy": {
+				"UARules": {
+					"rules": [{
+						"rule": {
+							"operator": "INCLUDE",
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasCreatedReviewBy",
+									"isReverse": false
+								}
+							}
+						}
+					}]
+				},
+				"AVRules": {
+					"rules": [{
+						"rule": {
+							"operator": "EQUAL",
+							"number": 0,
+							"depencency": {
+								"dependencyPath": [{
+									"dependencyPath": {
+										"name": "wasOneOfReviewOof",
+										"isReverse": false
+									}
+								},
+								"ANY_OBJECT",
+								{
+									"dependencyPath": {
+										"name": "wasGradedOof",
+										"isReverse": true
+									}
+								}],
+								"isReverse": false
+							}
+						}
+					}]
+				}
+			},
+			"isIncreaseObjetVersion": true
+		},
+		"grade": {
+			"roles": [{
+				"name": "input",
+				"isInput": true
+			},
+			{
+				"name": "grade",
+				"isInput": false
+			}],
+			"policy": {
+				"AVRules": {
+					"rules": [{
+						"rule": {
+							"operator": "BIG_EQUAL",
+							"number": 2,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasReviewedOof",
+									"isReverse": true
+								}
+							}
+						}
+					},
+					{
+						"rule": {
+							"operator": "EQUAL",
+							"number": 0,
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasGradedOof",
+									"isReverse": true
+								}
+							}
+						}
+					}],
+					"operator": "AND"
+				}
+			},
+			"isIncreaseObjetVersion": false
+		},
+		"append": {
+			"roles": [{
+				"name": "src",
+				"isInput": true
+			},
+			{
+				"name": "ref",
+				"isInput": true
+			},
+			{
+				"name": "append",
+				"isInput": false
+			}],
+			"policy": {
+				"UARules": {
+					"rules": [{
+						"rule": {
+							"operator": "INCLUDE",
+							"depencency": {
+								"dependencyPath": {
+									"name": "wasGradedBy",
+									"isReverse": false
+								}
+							},
+							"relevantObjectRole": "src"
+						}
+					}]
+				},
+				"AVRules": {
+					"rules": [{
+						"rule": {
+							"operator": "EQUAL",
+							"leftDepencency": {
+								"dependencyPath": {
+									"name": "wasGradedOof",
+									"isReverse": false
+								}
+							},
+							"leftRelevantObjectRole": "src",
+							"rigthDepencency": {
+								"dependencyPath": {
+									"name": "wasOneOfReviewOof",
+									"isReverse": false
+								}
+							},
+							"rigthRelevantObjectRole": "ref"
+						}
+					}]
+				}
+			},
+			"isIncreaseObjetVersion": true
+		}
+	}
+}
