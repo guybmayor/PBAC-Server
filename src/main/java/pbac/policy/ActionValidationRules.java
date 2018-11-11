@@ -29,6 +29,9 @@ public class ActionValidationRules extends Rules<ActionValidationRuleValidation>
 			}
 		}
 		
+		if (getOper() == RulesConnectOperations.OR) // all the rules are false
+			return false;
+		
 		return true;
 	}
 }
