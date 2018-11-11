@@ -30,6 +30,9 @@ public class UserAuthorizationRules extends Rules<UserAuthorizationValidation> i
 			}
 		}
 		
+		if (getOper() == RulesConnectOperations.OR) // all the rules are false
+			return false;
+		
 		return true;
 	}
 }
